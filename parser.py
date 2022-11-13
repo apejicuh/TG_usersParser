@@ -14,7 +14,7 @@ async def main():
     print(f'username: {me.username}')
     print(f'phone number: {me.phone}')
 
-    group_link = 'investtonmarket'  # Ссылка на чат, откуда будут доставаться пользователи
+    group_link = 'chatlink'  # Ссылка на чат, откуда будут доставаться пользователи
     _path = f'users_of_{group_link}_chat.csv'
     print(f'path: {_path} results') # Файл, куда будет выводиться результат парсинга
 
@@ -61,17 +61,19 @@ async def main():
         if phone_number is not None:
             with_numbers += 1
 
-        # Записываем результаты в .csv файл
-        with open(_path, 'a', encoding='utf-8', newline='') as file:
-            writer = csv.writer(file, delimiter=',')
-            writer.writerow(
+            with open(_path, 'a', encoding='utf-8', newline='') as file:
+                writer = csv.writer(file, delimiter=',')
+                writer.writerow(
                 (
                     user_name,
                     phone_number,
                     first_name,
                     second_name
                 )
-            )
+                )
+
+        # Записываем результаты в .csv файл
+        
 
     print(f'[INFO] | processed: {number_of_participants} users')
     print(f'[INFO] | with phone: {with_numbers} users')
